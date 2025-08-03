@@ -5,9 +5,11 @@ public class Calc {
         expression = expression.replaceAll(" ", "");
         if (expression.contains("*")) {
             String[] bits = expression.split("\\*");
-            int num1 = Integer.parseInt(bits[0]);
-            int num2 = Integer.parseInt(bits[1]);
-            return num1 * num2;
+            int result = Integer.parseInt(bits[0]);
+            for (int i = 1; i < bits.length; i++) {
+                result *= Integer.parseInt(bits[i]);
+            }
+            return result;
         }
         String[] bits = expression.split("(?=[-+])"); // + 또는 - 앞에서 split
         int result = Integer.parseInt(bits[0]);
