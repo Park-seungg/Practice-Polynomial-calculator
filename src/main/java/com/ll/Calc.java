@@ -3,8 +3,11 @@ package com.ll;
 public class Calc {
     public static int run(String expression) {
         expression = expression.replaceAll(" ", "");
-        if (expression.equals("10*10")) {
-            return 100;
+        if (expression.contains("*")) {
+            String[] bits = expression.split("\\*");
+            int num1 = Integer.parseInt(bits[0]);
+            int num2 = Integer.parseInt(bits[1]);
+            return num1 * num2;
         }
         String[] bits = expression.split("(?=[-+])"); // + 또는 - 앞에서 split
         int result = Integer.parseInt(bits[0]);
